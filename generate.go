@@ -2,10 +2,6 @@ package main
 
 import "strings"
 
-func SplitInput(text string) []string {
-	return strings.Split(text, "\n")
-}
-
 func GenerateArt(input string, banner map[rune][]string) string {
 	if input == "" {
 		return ""
