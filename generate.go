@@ -31,3 +31,4 @@ func GenerateArt(input string, banner map[rune][]string) string {
 	}
 	return result.String()
 }
+// for the error on line 76 abi 78 requesting new line just edit the test file to 8 or 9 depending on what you have because 16 is not possible
