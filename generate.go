@@ -2,28 +2,28 @@ package main
 
 import "strings"
 
+func SplitInput(text string) []string {
+	return strings.Split(text, "\n")
+}
+
 func GenerateArt(input string, banner map[rune][]string) string {
 	if input == "" {
 		return ""
 	}
 
-	Splitinput := SplitInput(input)
+	if strings.Trim(input, `\n`) == `` {
+		strings.ReplaceAll(input, `\n`, "\n")
+	}
 
-	allEmpty := true
-	for _, r := range Splitinput {
-		if r != "" {
-			allEmpty = false
-			break
-		}
-	}
-	if allEmpty {
-		return strings.Repeat("\n", len(Splitinput)-1)
-	}
+	Splitinput := SplitInput(input)
 
 	var result strings.Builder
 
 	for i, lines := range Splitinput {
-		if lines == "" && i < len(Splitinput)-1 { // handles intermediate newline (A\n\nB)
+		if lines == "" {
+			if i == len(Splitinput)-1 {
+				continue
+			}
 			result.WriteString("\n")
 			continue
 		}
